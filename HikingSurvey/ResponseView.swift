@@ -19,11 +19,12 @@ struct ResponseView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .fill(.white)
             )
+        Text(response.score, format: .number.rounded(increment: 0.1))
     }
 }
 
 #Preview {
     ResponseView(
-        response: .init(text: "I enjoy hiking very much!")
+        response: .init(text: "I enjoy hiking very much!", score: 1.0)
     )
 }
