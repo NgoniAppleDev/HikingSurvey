@@ -11,12 +11,12 @@ import Charts
 struct ChartView: View {
     var responses: [Response]
     
-    init(responses: [Response]) {
-        self.responses = responses.sorted { $0.score < $1.score }
+    private var sortedResponses: [Response] {
+        responses.sorted { $0.score < $1.score }
     }
     
     var body: some View {
-        Chart(responses) { response in
+        Chart(sortedResponses) { response in
             SectorMark(
                 angle: .value("Type", 1),
                 innerRadius: .ratio(0.75)
@@ -37,7 +37,7 @@ struct ChartView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height: frame.height * 0.4)
-                        .foregroundStyle(Color(white: 0.59))
+                        .foregroundStyle(Color(.secondaryLabel))
                         .position(x: frame.midX, y: frame.midY)
                 }
             }

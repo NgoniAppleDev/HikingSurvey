@@ -21,7 +21,7 @@ struct ContentView: View {
                 .font(.title.bold())
                 .padding(.top, 24)
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 ChartView(responses: responses)
                 
                 ForEach(responses) { response in
@@ -56,7 +56,10 @@ struct ContentView: View {
             }
         }
         .padding(.horizontal)
-        .background(Color(white: 0.94))
+        .background(
+            Color(.systemGroupedBackground)
+                .ignoresSafeArea()
+        )
     }
     
     func saveResponse(text: String) {

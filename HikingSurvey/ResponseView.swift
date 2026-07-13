@@ -20,7 +20,7 @@ struct ResponseView: View {
             
             Image(systemName: response.sentiment.icon)
                 .frame(width: 30, height: 30)
-                .foregroundStyle(.white)
+                .foregroundStyle(Color(.label))
                 .background(
                     RoundedRectangle(cornerRadius: 8)
                         .fill(response.sentiment.sentimentColor.gradient)
@@ -30,7 +30,7 @@ struct ResponseView: View {
         .padding(16)
         .background(
             RoundedRectangle(cornerRadius: 8)
-                .fill(.white)
+                .fill(Color(.secondarySystemGroupedBackground))
         )
     }
 }
