@@ -31,6 +31,7 @@ struct ContentView: View {
             
             HStack {
                 TextField("What do you think about hiking?", text: $responseText, axis: .vertical)
+                    .focused($textFieldIsFocused)
                     .textFieldStyle(.roundedBorder)
                     .lineLimit(5)
                 
@@ -49,6 +50,9 @@ struct ContentView: View {
                 .padding(.horizontal, 4)
             }
             .padding(.bottom, 8)
+        }
+        .onTapGesture {
+            textFieldIsFocused = false
         }
         .onAppear {
             for response in Response.sampleResponses {
