@@ -8,14 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var responses: [Response] = []
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Opinions on Hiking")
+                .frame(maxWidth: .infinity)
+                .font(.title)
+                .padding(.top, 24)
+            
+            ScrollView {
+                ForEach(responses) { response in
+                    Text(response.text)
+                }
+            }
         }
-        .padding()
+        .onAppear {
+            for response in Response.sampleResponses {
+                responses.insert(Response(text: response), at: 0)
+            }
+        }
+        .padding(.horizontal)
+        .background(Color(white: 0.94))
     }
 }
 
